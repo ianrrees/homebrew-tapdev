@@ -68,13 +68,13 @@ class Nglib < Formula
       }
       int main(int argc, char **argv) {
           nglib::Ng_Init();
-          auto mesh(nglib::Ng_NewMesh());
+          nglib::Ng_Mesh *mesh(nglib::Ng_NewMesh());
           nglib::Ng_DeleteMesh(mesh);
           nglib::Ng_Exit();
           return 0;
       }
     EOS
-    system ENV.cxx, "-Wall", "-o", "test", "test.cpp", "-std=c++11",
+    system ENV.cxx, "-Wall", "-o", "test", "test.cpp",
            "-I#{include}", "-L#{lib}", "-lnglib"
     system "./test"
   end
