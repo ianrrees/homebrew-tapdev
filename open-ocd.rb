@@ -25,7 +25,7 @@ class OpenOcd < Formula
   depends_on "hidapi" => :recommended
 
   def install
-    inreplace buildpath/"Makefile.am", " --without-ext=\"default\"", ""
+    inreplace buildpath/"Makefile.am", "AX_CONFIG_SUBDIR_OPTION([jimtcl].*", "AX_CONFIG_SUBDIR_OPTION([jimtcl], [--disable-install-jim])"
 
     # all the libusb and hidapi-based drivers are auto-enabled when
     # the corresponding libraries are present in the system
